@@ -50,3 +50,26 @@ class Wservice:
         elif self.verbose:
                 print(f"[!] {self.service} is not running.")
 
+
+    def restart(self):
+        if self.running:
+            win32serviceutil.RestartService(self.service)
+
+            time.sleep(2)
+
+            if self.running:
+                if self.verbose:
+                    print(f"[+] {self.service} restarted successfully.")
+                    
+                return True
+
+            else:
+                if self.verbose:
+                    print(f"[-] Cannot restart {self.service}")
+                return False
+        
+        elif self.verbose:
+            print(f"[!] {self.service} is not running.")
+    
+
+    
