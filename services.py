@@ -84,6 +84,7 @@ class Wservice:
         elif action == "restart":
             service.restart()
 
+        getattr()
     
     if __name__ == "__main__":
         import argparse
