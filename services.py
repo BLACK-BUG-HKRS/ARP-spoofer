@@ -72,4 +72,25 @@ class Wservice:
             print(f"[!] {self.service} is not running.")
     
 
+    def main(action, service):
+        service = Wservice(service, verbose=True)
+
+        if action == "start":
+            service.start()
+
+        elif action == "stop":
+            service.stop()
+        
+        elif action == "restart":
+            service.restart()
+
     
+    if __name__ == "__main__":
+        import argparse
+        parser = argparse.ArgumentParser(description="Windows Service Handler.")
+        parser.add_argument("service")
+        parser.add_argument("-a", "--action", help="action to do, 'start', 'stop' or 'restart'", action="store", required=True, dest="action")
+
+        given_args = parser.parse_args()
+        service, action = given_args.service, given_args.action
+        main(action, service)
