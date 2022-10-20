@@ -16,4 +16,7 @@ def _enable_linux_iproute():
     with open(file_path, "W") as f:
         print(1, file=f)
 
-        
+def _enable_windows_iproute():
+    from services import WService
+    service = WService("RemoteAccess")
+    service.start()
