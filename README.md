@@ -20,7 +20,7 @@ options:
   -v, --verbose         verbosity, default is True (simple message each second)
 ```
 
-For instance, if you want to spoof <b>192.168.1.5</b> ang gateway <b>192.168.1.1</b>
+For instance, if you want to spoof <b>192.168.1.5</b> and the gateway is <b>192.168.1.1</b>
 
 ```shell
 python3 spoof.py -tg 192.168.1.5 -hs 192.168.1.1 --verbose
