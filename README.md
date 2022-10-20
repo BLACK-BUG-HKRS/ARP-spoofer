@@ -22,6 +22,6 @@ options:
 
 For instance, if you want to spoof `192.168.1.5` and the gateway is `192.168.1.1`
 
-```shell
-python3 spoof.py -tg 192.168.1.5 -hs 192.168.1.1 --verbose
+```
+sudo python3 spoof.py -tg 192.168.1.5 -hs 192.168.1.1 --verbose
 ```
