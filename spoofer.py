@@ -72,11 +72,11 @@ def restore(target_ip, host_ip, verbose=True):
 ## the main function
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="ARP spoof script")
-    parser.add_argument("-t", "--target", help="Victim IP Address to ARP poison")
-    parser.add_argument("-g", "--gateway", help="Host IP Address, the host you wish to intercept packets for (usually the gateway)")
+    parser.add_argument("-tg", "--target", help="Victim IP Address to ARP poison")
+    parser.add_argument("-hs", "--host", help="Host IP Address, the host you wish to intercept packets for (usually the gateway)")
     parser.add_argument("-v", "--verbose", action="store_true", help="verbosity, default is True (simple message each second)")
     args = parser.parse_args()
-    target, host, verbose = args.target, args.gateway, args.verbose
+    target, host, verbose = args.target, args.host, args.verbose
 
     enable_ip_route()
     try:
