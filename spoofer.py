@@ -14,7 +14,7 @@ def _enable_linux_iproute():
         if f.read() == 1:
             return
 
-    with open(file_path, "W") as f:
+    with open(file_path, "w") as f:
         print(1, file=f)
 
 
