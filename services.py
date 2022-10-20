@@ -24,11 +24,29 @@ class Wservice:
 
                 return True
 
-            elif self.verbose:
-                print(f"[!] {self.service} is already running.")
             else:
                 if self.verbose:
                     print(f"[-] Cannot start {self.service}")
                 return False
-            
+
+        elif self.verbose:
+                print(f"[!] {self.service} is already running.")
+
+    def stop(self):
+        if self.running:
+            win32serviceutil.StopService(self.service)
+
+            time.sleep(0.5)
+
+            if not self.running:
+                if self.verbose:
+                    print(f"[+] {self.service} stopped successfully.")
+                return True
+
+            else:
+                if self.verbose:
+                    print(f"[-] Cannot stop {self.service}")
+        
+        elif self.verbose:
+                print(f"[!] {self.service} is not running.")
 
